@@ -1,5 +1,18 @@
 historico_treinos = []
 
+def READ(arquivos_treinos):
+    if not arquivos_treinos:
+        print("Nenhum treino encontrado.")
+        return
+    for treino in arquivos_treinos:
+        try:
+            with open(treino, "r", encoding="utf-8") as arquivo_treino:
+                print(f"\nArquivo: {treino}")
+                print(arquivo_treino.read())
+                print("-" * 30)
+        except Exception as e:
+            print(f"Erro ao ler o arquivo {treino}: {e}")
+
 while True:
     opcoes_usuario = int(input("Escolha uma ação:\n1-CREATE\n2-READ\n3-UPDATE\n4-DELETE\nDigite apenas o número correspondente à ação: "))
 
@@ -14,11 +27,11 @@ while True:
 #READ
     elif opcoes_usuario == 2:
         if historico_treinos == []:
-            print("A lista está vazia, não há o que mostrar.")
+            print("O histórico está vazio, não há o que mostrar.")
         else:
-            with open("treinos-crossfit.txt","r", encoding="utf8") as historico:
-                ler_historico = historico.read()
-                print(ler_historico)
+            for i in historico_treinos:
+                READ(historico_treinos)
+
 
 #UPDATE
     elif opcoes_usuario == 3:
