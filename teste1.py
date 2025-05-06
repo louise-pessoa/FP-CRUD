@@ -5,17 +5,27 @@ while True:
 
 #CREATE
     if opcoesUsuario == 1:
-        dicionario_treinos(input("Adicionar treino: "))
+        data = (input("Data do treino (exemplo: xx xx xxxx): "))
+        dicionario_treinos[data] = (input("Adicionar treino: "))
         data = input("")
         for value in (dicionario_treinos):
             print(value)
 
+
+
+
+
+
+
+
 #READ
     elif opcoesUsuario == 2:
-        if dicionario_treinos == {}:
-            print("O histórico está vazio, não há o que mostrar.")
-        # else:
-        #     arquivo
+        if dicionario_treinos == []:
+            print("A lista está vazia, não há o que mostrar.")
+        else:
+            i=0
+            for i in range (len(dicionario_treinos)):
+                print(i,"-",dicionario_treinos[i])
 
 #UPDATE
     elif opcoesUsuario == 3:
