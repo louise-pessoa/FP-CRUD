@@ -3,6 +3,7 @@ treinos = []
 while True:
     opcoesUsuario = int(input("Escolha uma ação:\n1-CREATE\n2-READ\n3-UPDATE\n4-DELETE\nDigite apenas o número correspondente à ação: "))
 
+
 #CREATE
     if opcoesUsuario == 1:
         treinos.append(input("Adicionar treino: "))
