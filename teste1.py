@@ -12,20 +12,16 @@ while True:
             print(value)
 
 
-
-
-
-
-
-
 #READ
     elif opcoesUsuario == 2:
         if dicionario_treinos == []:
             print("A lista está vazia, não há o que mostrar.")
         else:
-            i=0
-            for i in range (len(dicionario_treinos)):
-                print(i,"-",dicionario_treinos[i])
+            with open("historico-treinos-crossfit.txt","r", encoding="utf8") as historico:
+                ler_historico = historico.read()
+                print(ler_historico)
+
+
 
 #UPDATE
     elif opcoesUsuario == 3:
