@@ -1,0 +1,52 @@
+treinos = []
+
+while True:
+    opcoesUsuario = int(input("Escolha uma ação:\n1-CREATE\n2-READ\n3-UPDATE\n4-DELETE\nDigite apenas o número correspondente à ação: "))
+
+#CREATE
+    if opcoesUsuario == 1:
+        treinos.append(input("Adicionar treino: "))
+        data = input("")
+        for value in (treinos):
+            print(value)
+
+#READ
+    elif opcoesUsuario == 2:
+        if treinos == []:
+            print("A lista está vazia, não há o que mostrar.")
+        else:
+            i=0
+            for i in range (len(treinos)):
+                print(i,"-",treinos[i])
+
+#UPDATE
+    elif opcoesUsuario == 3:
+        indice = int(input("Digite o índice (a partir de 0) do elemento a ser atualizado: "))
+        if indice in range (len(treinos)):
+            treinos[indice] = input("Digite o novo elemento: ")
+            i=0
+            for i in range (len(treinos)):
+                print(i,"-",treinos[i])
+        else:
+            print("Este índice não é válido!")
+
+#DELETE
+    elif opcoesUsuario == 4:
+        indice = int(input("Digite o índice (a partir de 0) do elemento a ser excluído: "))
+        if indice in range(len(treinos)):
+            elementoRemovido = treinos.pop(indice)
+            print(elementoRemovido, "foi removido da lista")
+            if treinos == []:
+                print("Lista atualizada: ")
+            else:
+                i=0
+                print("Lista atualizada:")
+                for i in range (len(treinos)):
+                    print(f"{i}- {treinos[i]}")
+        else:
+            print("Este índice não é válido!")
+
+#encerrar o código
+    else:
+        print("Opção inválida, o programa será encerrado!")
+        break
