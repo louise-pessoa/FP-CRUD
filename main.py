@@ -1,36 +1,44 @@
 historico_treinos = []
 
-def READ(arquivos_treinos):
-    if not arquivos_treinos:
+def ler_arquivos(historico_treinos):
+    if not historico_treinos:
         print("Nenhum treino encontrado.")
         return
-    for treino in arquivos_treinos:
+    for treino in historico_treinos:
         try:
             with open(treino, "r", encoding="utf-8") as arquivo_treino:
                 print(f"\nArquivo: {treino}")
                 print(arquivo_treino.read())
-                print("-" * 30)
+                print("-" * 10)
         except Exception as e:
             print(f"Erro ao ler o arquivo {treino}: {e}")
 
+def adicionar_no_arquivo(movimentos, data, tempo, tipo):
+    global movimentos_lista
+    movimentos_lista = movimentos.split(", ")
+    historico.write("Data: " + data + "\nDuração: " + tempo + "\nTipo de treino: " + tipo)
+    for i in range(len(movimentos_lista)) :
+        historico.write("Movimentos: \n" + i + "." + movimentos_lista[i] + "\n")
+
 while True:
     opcoes_usuario = int(input("Escolha uma ação:\n1-CREATE\n2-READ\n3-UPDATE\n4-DELETE\nDigite apenas o número correspondente à ação: "))
-
-#CREATE
+    
+    #inputs para adicionar
     if opcoes_usuario == 1:
-        data = (input("Data do treino (exemplo: xx xx xxxx): "))
-        historico_treinos[data] = (input("Adicionar treino: "))
-        data = input("")
-        for value in (historico_treinos):
-            print(value)
+        with open("treinos-crossfit.txt", "a", encoding='utf8') as historico:
+            data = input("Data do treino (exemplo: xx/xx/xxxx): ")
+            tempo = input("Tempo de duração do treino em minutos: ")
+            tipo = input("Tipo do treino (AMRAP, EMOM, For Time) : ")
+            movimentos = input("Movimentos (separe os movimentos por vígulas): ")
+   
 
 #READ
     elif opcoes_usuario == 2:
         if historico_treinos == []:
             print("O histórico está vazio, não há o que mostrar.")
         else:
-            for i in historico_treinos:
-                READ(historico_treinos)
+            #chamando função de leitura
+            ler_arquivos(historico_treinos)
 
 
 #UPDATE
@@ -43,6 +51,7 @@ while True:
                 print(i,"-",historico_treinos[i])
         else:
             print("Este índice não é válido!")
+
 
 #DELETE
     elif opcoes_usuario == 4:
@@ -59,6 +68,7 @@ while True:
                     print(f"{i}- {historico_treinos[i]}")
         else:
             print("Este índice não é válido!")
+
 
 #encerrar o código
     else:
