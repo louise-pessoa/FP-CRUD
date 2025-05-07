@@ -24,13 +24,6 @@ def ler_arquivos(historico_treinos):
         except Exception as e:
             print(f"Erro ao ler o arquivo {treino}: {e}")
 
-def adicionar_no_arquivo(movimentos, data, tempo, tipo):
-    global movimentos_lista
-    movimentos_lista = movimentos.split(", ")
-    historico.write("Data: " + data + "\nDuração: " + tempo + "\nTipo de treino: " + tipo)
-    for i in range(len(movimentos_lista)) :
-        historico.write("Movimentos: \n" + i + "." + movimentos_lista[i] + "\n")
-
 while True:
     cont_arquivos += 1
     historico = f"treinos-crossfit{cont_arquivos}.txt"
