@@ -10,6 +10,7 @@ def adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos):
 
         for i in range(len(movimentos_lista)) :
             historico.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
+            
 
 def ler_arquivos(historico_treinos):
     if not historico_treinos:
