@@ -1,4 +1,6 @@
-historico_treinos = []
+import os
+
+lista_seila = []
 cont_arquivos = 0
 
 def adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos):
@@ -11,6 +13,16 @@ def adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos):
         for i in range(len(movimentos_lista)) :
             historico.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
             
+def lista_arquivos(comeco, fim, caminho):
+    historico_treinos = []
+    for arquivo in os.listdir(caminho):
+        if arquivo.startswith(comeco) and arquivo.endswith(fim):
+            historico_treinos.append(arquivo)
+            historico_treinos.reverse()
+
+    return historico_treinos
+cont_arquivos = len(lista_arquivos("treinos-crossfit", ".txt", "."))
+
 
 def ler_arquivos(historico_treinos):
     if not historico_treinos:
@@ -32,31 +44,32 @@ while True:
     
     #inputs para adicionar
     if opcoes_usuario == 1:
-            data = input("Data do treino (exemplo: xx/xx/xxxx): ")
-            tempo = input("Tempo de duração do treino em minutos: ")
-            tipo = input("Tipo do treino (AMRAP, EMOM, For Time) : ")
-            movimentos = input("Movimentos (separe os movimentos por vígulas): ")
-            adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos)
-
+        data = input("Data do treino (exemplo: xx/xx/xxxx): ")
+        tempo = input("Tempo de duração do treino em minutos: ")
+        tipo = input("Tipo do treino (AMRAP, EMOM, For Time) : ")
+        movimentos = input("Movimentos (separe os movimentos por vígulas): ")
+        adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos)
+        print(f"Treino salvo em: treinos-crossfit{cont_arquivos}.txt")
+        lista_arquivos("treinos-crossfit", ".txt", ".")
             
 
 #READ
     elif opcoes_usuario == 2:
-        if historico_treinos == []:
+        if lista_seila == []:
             print("O histórico está vazio, não há o que mostrar.")
         else:
             #chamando função de leitura
-            ler_arquivos(historico_treinos)
+            ler_arquivos(lista_seila)
 
 
 #UPDATE
     elif opcoes_usuario == 3:
         indice = int(input("Digite o índice (a partir de 0) do elemento a ser atualizado: "))
-        if indice in range (len(historico_treinos)):
-            historico_treinos[indice] = input("Digite o novo elemento: ")
+        if indice in range (len(lista_seila)):
+            lista_seila[indice] = input("Digite o novo elemento: ")
             i=0
-            for i in range (len(historico_treinos)):
-                print(i,"-",historico_treinos[i])
+            for i in range (len(lista_seila)):
+                print(i,"-",lista_seila[i])
         else:
             print("Este índice não é válido!")
 
@@ -64,16 +77,16 @@ while True:
 #DELETE
     elif opcoes_usuario == 4:
         indice = int(input("Digite o índice (a partir de 0) do elemento a ser excluído: "))
-        if indice in range(len(historico_treinos)):
-            elementoRemovido = historico_treinos.pop(indice)
+        if indice in range(len(lista_seila)):
+            elementoRemovido = lista_seila.pop(indice)
             print(elementoRemovido, "foi removido da lista")
-            if historico_treinos == []:
+            if lista_seila == []:
                 print("Lista atualizada: ")
             else:
                 i=0
                 print("Lista atualizada:")
-                for i in range (len(historico_treinos)):
-                    print(f"{i}- {historico_treinos[i]}")
+                for i in range (len(lista_seila)):
+                    print(f"{i}- {lista_seila[i]}")
         else:
             print("Este índice não é válido!")
 
