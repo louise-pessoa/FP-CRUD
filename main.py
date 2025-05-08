@@ -28,12 +28,24 @@ def ler_arquivos(historico_geral):
         return
     for treino in historico_geral:
         try:
-            with open(treino, "r", encoding="utf-8") as arquivo_treino:
+            with open(treino, "r", encoding="utf-8") as nome_arquivo:
                 print(f"\nArquivo: {treino}")
-                print(arquivo_treino.read())
+                print(nome_arquivo.read())
                 print("/\\" * 15)
         except Exception as e:
             print(f"Erro ao ler o arquivo {treino}: {e}")
+
+def ler_arquivo(arquivo_p_ler):
+    if not arquivo_p_ler:
+        print("Nenhum treino encontrado.")
+        return
+    try:
+        with open(arquivo_p_ler, "r", encoding="utf-8") as nome_arquivo:
+            print(f"\nArquivo: {arquivo_p_ler}")
+            print(nome_arquivo.read())
+            print("/\\" * 15)
+    except Exception as e:
+        print(f"Erro ao ler o arquivo: {e}")
 
 #FILTRAR
 def filtragem():
@@ -76,7 +88,7 @@ Digite apenas o número correspondente à ação: """))
             data = input("Data do treino (exemplo: xx/xx/xxxx): ")
             tempo = input("Tempo de duração do treino em minutos: ")
             tipo = input("Tipo do treino (AMRAP, EMOM, For Time): ")
-            movimentos = input("Movimentos (separe os movimentos por vírgulas): ")
+            movimentos = input("Movimentos (separe os movimentos por ','): ")
             lista_arquivos("treino-crossfit", ".txt", ".")
             adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos)
             print(f"Treino salvo em: treino-crossfit{cont_arquivos+1}.txt")
@@ -100,6 +112,10 @@ Digite a opção a ser visualizada: """))
                     arquivo_por_linha = '\n'.join(historico_geral)
                     print(f"Escolha um dos arquivos abaixo para visualizar:\n{arquivo_por_linha}")
                     arquivo_p_ler = input("Digite (ou copie e cole) o nome do arquivo a ser visualizado:\n")
+                    if not arquivo_p_ler:
+                        print("Treino não encontrado.")
+                    else:
+                        ler_arquivo(arquivo_p_ler)
                 #elif filtro == 3:
                     #inserir funcao de filtro
                 #elif filtro == 4:
