@@ -1,10 +1,9 @@
 import os
 
 historico_geral = []
-cont_arquivos = 1
 
 def adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos):
-    with open(f"treinos-crossfit{cont_arquivos}.txt", "w", encoding='utf8') as historico:
+    with open(f"treino-crossfit{cont_arquivos+1}.txt", "w", encoding='utf8') as historico:
         movimentos_lista = [movimentos.capitalize() for movimentos in movimentos.split(", ")]
 
         historico.write("Data: " + data + "\nDuração: " + tempo + " minutos\nTipo de treino: " + tipo)
@@ -21,10 +20,10 @@ def lista_arquivos(comeco, fim, caminho):
             historico_treinos.reverse()
 
     return historico_treinos
-cont_arquivos = len(lista_arquivos("treinos-crossfit", ".txt", "."))
+cont_arquivos = len(lista_arquivos("treino-crossfit", ".txt", "."))
 
-def ler_arquivos(historico_treinos):
-    if historico_treinos == []:
+def ler_arquivos(historico_geral):
+    if historico_geral == []:
         print("Nenhum treino encontrado.")
         return
     for treino in historico_geral:
@@ -37,7 +36,7 @@ def ler_arquivos(historico_treinos):
             print(f"Erro ao ler o arquivo {treino}: {e}")
 
 while True:
-    historico = f"treinos-crossfit{cont_arquivos}.txt"
+    historico = f"treino-crossfit{cont_arquivos}.txt"
     opcoes_usuario = int(input("\nEscolha uma ação:\n1-CREATE\n2-READ\n3-UPDATE\n4-DELETE\nDigite apenas o número correspondente à ação: "))
     
     try:
@@ -45,12 +44,12 @@ while True:
         if opcoes_usuario == 1:
             data = input("Data do treino (exemplo: xx/xx/xxxx): ")
             tempo = input("Tempo de duração do treino em minutos: ")
-            tipo = input("Tipo do treino (AMRAP, EMOM, For Time) : ")
+            tipo = input("Tipo do treino (AMRAP, EMOM, For Time): ")
             movimentos = input("Movimentos (separe os movimentos por vírgulas): ")
-            lista_arquivos("treinos-crossfit", ".txt", ".")
+            lista_arquivos("treino-crossfit", ".txt", ".")
             adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos)
-            print(f"Treino salvo em: treinos-crossfit{cont_arquivos}.txt")
-            historico_geral.append(historico)
+            #print(f"Treino salvo em: treino-crossfit{cont_arquivos+1}.txt")
+            historico_geral = lista_arquivos("treino-crossfit", ".txt", ".")
             
 
 #READ
@@ -65,6 +64,6 @@ while True:
 #DELETE
 
     #encerrar o código
-    except ValueError:
-        print("Opção inválida, o programa será encerrado!")
+    except Exception as e:
+        print(f"Erro: {e}")
         break
