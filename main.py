@@ -2,15 +2,14 @@ import os
 
 historico_geral = []
 
-def adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos):
-    with open(f"treino-crossfit{cont_arquivos+1}.txt", "w", encoding='utf8') as nome_arquivo:
-        movimentos_lista = [movimentos.capitalize() for movimentos in movimentos.split(", ")]
+def adicionar_no_arquivo(movimentos, data, tempo, tipo, data_conteudo):
+        with open(f"treino-crossfit{data}.txt", "w", encoding='utf8') as arquivo:
+            movimentos_lista = [movimentos.capitalize() for movimentos in movimentos.split(", ")]
+            arquivo.write("Data: " + data_conteudo + "\nDuração: " + tempo + " minutos\nTipo de treino: " + tipo)
+            arquivo.write("\nMovimentos: \n")
 
-        nome_arquivo.write("Data: " + data + "\nDuração: " + tempo + " minutos\nTipo de treino: " + tipo)
-        nome_arquivo.write("\nMovimentos: \n")
-
-        for i in range(len(movimentos_lista)):
-            nome_arquivo.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
+            for i in range(len(movimentos_lista)):
+                arquivo.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
             
 def lista_arquivos(comeco, fim, caminho):
     historico_treinos = []
@@ -70,13 +69,12 @@ def editar_movim_arquivo(arquivo_p_editar, edicao):
     for i in arquivo_p_editar:
         if i == 3:
             for j in range(len(edicao)):
-                arquivo_p_editar[j+3] = str(j+1)+". "+edicao[j+3]+"\n"
+                arquivo_p_editar[j+3] = str(j+1)+". "+edicao[j]+"\n"
     movimentos_editados = arquivo_p_editar
     return movimentos_editados
 
 
 while True:
-    nome_arquivo = f"treino-crossfit{cont_arquivos}.txt"
     
     try:
 #CRIAR
@@ -85,13 +83,19 @@ Digite apenas o número correspondente à ação: """))
         #inputs para adicionar
         if opcoes_usuario == 1:
             print("\n"+"-"*5+"MODO DE ADIÇÃO"+"-"*5)
-            data = input("Data do treino (exemplo: xx/xx/xxxx): ")
+
+            data = input("Data do treino (exemplo: xx xx xxxx): ")
+            data_split = data.split()
+            data_nome_arquivo = "".join(data_split)
+            data_conteudo = "/".join(data_split)
+            nome_arquivo = f"treino-crossfit{data_nome_arquivo}.txt"
             tempo = input("Tempo de duração do treino em minutos: ")
             tipo = input("Tipo do treino (AMRAP, EMOM, For Time): ")
             movimentos = input("Movimentos (separe os movimentos por ','): ")
             lista_arquivos("treino-crossfit", ".txt", ".")
-            adicionar_no_arquivo(movimentos, data, tempo, tipo, cont_arquivos)
-            print(f"Treino salvo em: treino-crossfit{cont_arquivos+1}.txt")
+            adicionar_no_arquivo(movimentos, data_nome_arquivo, tempo, tipo, data_conteudo)
+            
+            print(f"Treino salvo em: treino-crossfit{data_nome_arquivo}.txt")
             historico_geral = lista_arquivos("treino-crossfit", ".txt", ".")
             
 
@@ -158,8 +162,15 @@ Digite a opção a ser editada: """))
                 print(f"Erro: {e}")
                 break
 
-
 #DELETAR
+
+#SELECIONAR
+        elif opcoes_usuario == 3:
+                print("\n"+"-"*5+"MODO DE REMOÇÃO"+"-"*5)
+                arquivo_por_linha = '\n'.join(historico_geral)
+                print(f"Escolha um dos arquivos abaixo para editar:\n{arquivo_por_linha}")
+                arquivo_p_remover = input("Digite (ou copie e cole) o nome do arquivo a ser removido:\n")
+
 
 #ENCERRAR
     except ValueError as e:
