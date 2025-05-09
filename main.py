@@ -12,14 +12,16 @@ def adicionar_no_arquivo(movimentos, data, tempo, tipo, data_conteudo):
                 arquivo.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
             
 def lista_arquivos(comeco, fim, caminho):
-    historico_treinos = []
-    for arquivo in os.listdir(caminho):
-        if arquivo.startswith(comeco) and arquivo.endswith(fim):
-            historico_treinos.append(arquivo)
-            historico_treinos.reverse()
+    try:
+        historico_treinos = []
+        for arquivo in os.listdir(caminho):
+            if arquivo.startswith(comeco) and arquivo.endswith(fim):
+                historico_treinos.append(arquivo)
+        historico_treinos.reverse()
+    except FileNotFoundError:
+        print(f"Arquivo não encontrado.")
 
     return historico_treinos
-cont_arquivos = len(lista_arquivos("treino-crossfit", ".txt", "."))
 
 def ler_arquivos(historico_geral):
     if historico_geral == []:
@@ -73,6 +75,21 @@ def editar_movim_arquivo(arquivo_p_editar, edicao):
     movimentos_editados = arquivo_p_editar
     return movimentos_editados
 
+def deletar_arquivo(arquivo_escolhido):
+    historico_treinos2 = lista_arquivos("treino-crossfit", ".txt", ".")
+    for arquivo in historico_treinos2:
+        if arquivo == arquivo_escolhido:
+            historico_treinos2.remove(arquivo)
+
+    try:
+        if os.path.exists(arquivo_escolhido):
+            os.remove(arquivo_escolhido)
+            print(f"Arquivo {arquivo_escolhido} removido com sucesso.")
+    except FileNotFoundError:
+        print(f"O arquivo {arquivo_escolhido} não existe. Digite um presente na lista anterior.")
+
+    
+
 
 while True:
     
@@ -85,13 +102,15 @@ Digite apenas o número correspondente à ação: """))
             print("\n"+"-"*5+"MODO DE ADIÇÃO"+"-"*5)
 
             data = input("Data do treino (exemplo: xx xx xxxx): ")
+
             data_split = data.split()
             data_nome_arquivo = "".join(data_split)
             data_conteudo = "/".join(data_split)
-            nome_arquivo = f"treino-crossfit{data_nome_arquivo}.txt"
+            
             tempo = input("Tempo de duração do treino em minutos: ")
             tipo = input("Tipo do treino (AMRAP, EMOM, For Time): ")
-            movimentos = input("Movimentos (separe os movimentos por ','): ")
+            movimentos = input("Movimentos (separe os movimentos por ', '): ")
+            
             lista_arquivos("treino-crossfit", ".txt", ".")
             adicionar_no_arquivo(movimentos, data_nome_arquivo, tempo, tipo, data_conteudo)
             
@@ -162,17 +181,20 @@ Digite a opção a ser editada: """))
                 print(f"Erro: {e}")
                 break
 
-#DELETAR
-
 #SELECIONAR
-        elif opcoes_usuario == 3:
-                print("\n"+"-"*5+"MODO DE REMOÇÃO"+"-"*5)
-                arquivo_por_linha = '\n'.join(historico_geral)
-                print(f"Escolha um dos arquivos abaixo para editar:\n{arquivo_por_linha}")
-                arquivo_p_remover = input("Digite (ou copie e cole) o nome do arquivo a ser removido:\n")
-
+        elif opcoes_usuario == 4:
+                try:
+                    print("\n"+"-"*5+"MODO DE REMOÇÃO"+"-"*5)
+                    arquivo_por_linha = '\n'.join(historico_geral)
+                    print(f"Escolha um dos arquivos abaixo para remover:\n{arquivo_por_linha}")
+                    arquivo_p_remover = input("Digite (ou copie e cole) o nome do arquivo a ser removido:\n")
+#DELETAR
+                    deletar_arquivo(arquivo_p_remover)
+                except Exception as e:
+                    print(f"Erro: {e}")
+                    break
 
 #ENCERRAR
-    except ValueError as e:
+    except Exception as e:
         print(f"Erro: {e}")
         break
