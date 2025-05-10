@@ -6,7 +6,7 @@ def adicionar_no_arquivo(movimentos, data, tempo, tipo, data_conteudo):
         with open(f"treino-crossfit{data}.txt", "w", encoding='utf8') as arquivo:
             movimentos_lista = [movimentos.capitalize() for movimentos in movimentos.split(", ")]
             arquivo.write("Data: " + data_conteudo + "\nDuração: " + tempo + " minutos\nTipo de treino: " + tipo)
-            arquivo.write("\nMovimentos: \n")
+            arquivo.write("\nMovimentos:\n")
 
             for i in range(len(movimentos_lista)):
                 arquivo.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
@@ -66,13 +66,26 @@ def editar_arquivo(arquivo_p_editar, opcao_edicao, edicao):
     return linha_editada
 
 def editar_movim_arquivo(arquivo_p_editar, edicao):
-    edicao = [edicao.capitalize() for movimento in edicao.split(", ")]
-    for i in arquivo_p_editar:
-        if i == 3:
-            for j in range(len(edicao)):
-                arquivo_p_editar[j+3] = str(j+1)+". "+edicao[j]+"\n"
-    movimentos_editados = arquivo_p_editar
-    return movimentos_editados
+    edicao_lista = [e.capitalize() for e in edicao.split(", ")]
+
+    with open(arquivo_p_editar, "r", encoding="utf8") as arquivo:
+        linhas = arquivo.readlines()
+
+    for i in range(len(linhas)):
+        if linhas[i].strip() == "Movimentos:":
+            for j in range(len(edicao_lista)):
+                linhas[i+1+j] = f"{j+1}. {edicao_lista[j]}\n"
+            
+            # Apagar movimentos se a lista de edições for menor
+            if len(edicao_lista) < (len(linhas) - (i+1)):
+                linhas = linhas[: i+1+len(edicao_lista)]
+
+            break
+
+    with open(arquivo_p_editar, "w", encoding="utf8") as arquivo:
+        arquivo.writelines(linhas)
+
+    return arquivo_p_editar
 
 def deletar_arquivo(arquivo_escolhido):
     historico_treinos2 = lista_arquivos("treino-crossfit", ".txt", ".")
@@ -87,7 +100,6 @@ def deletar_arquivo(arquivo_escolhido):
     except FileNotFoundError:
         print(f"O arquivo {arquivo_escolhido} não existe. Digite um presente na lista anterior.")
 
-    
 
 
 while True:
@@ -95,7 +107,7 @@ while True:
     try:
 #CRIAR
         print("/\\" * 15)
-        opcoes_usuario = int(input("""\nEscolha uma ação:\n1-Adicionar\n2-Visualizar\n3-Editar\n4-Deletar\n
+        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar\n3- Editar\n4- Deletar\n
 Digite apenas o número correspondente à ação: """))
         #inputs para adicionar
         if opcoes_usuario == 1:
@@ -114,93 +126,84 @@ Digite apenas o número correspondente à ação: """))
             lista_arquivos("treino-crossfit", ".txt", ".")
             adicionar_no_arquivo(movimentos, data_nome_arquivo, tempo, tipo, data_conteudo)
             
-            print(f"Treino salvo em: treino-crossfit{data_nome_arquivo}.txt")
+            print(f"\nTreino salvo como: treino-crossfit{data_nome_arquivo}.txt")
             historico_geral = lista_arquivos("treino-crossfit", ".txt", ".")
             
 
 #LER
         elif opcoes_usuario == 2:
-            try:
-                print("\n"+"-"*5+"MODO DE VISUALIZAÇÃO"+"-"*5)
-                filtro_ler = int(input("""1- Todo o histórico;
+            print("\n"+"-"*5+"MODO DE VISUALIZAÇÃO"+"-"*5)
+            filtro_ler = int(input("""Filtrar arquivos:\n1- Todo o histórico;
 2- Por nome do arquivo;
 3- Por tipo de treino;
 4- Por movimento.
-Digite a opção a ser visualizada: """))
-                if filtro_ler == 1:
-                #chamando função de leitura
-                    ler_arquivos(lista_arquivos("treino-crossfit", ".txt", "."))
-                elif filtro_ler == 2:
-                    print("\n"+"-"*5+"MODO DE SELEÇÃO"+"-"*5)
-                    arquivo_por_linha = '\n'.join(historico_geral)
-                    print(f"Escolha um dos arquivos abaixo para visualizar:\n{arquivo_por_linha}")
-                    arquivo_p_ler = input("Digite (ou copie e cole) o nome do arquivo a ser visualizado:\n")
-                    if not arquivo_p_ler:
-                        print("Treino não encontrado.")
-                    else:
-                        ler_arquivo(arquivo_p_ler)
-                #elif filtro_ler == 3:
-                    #inserir funcao de filtro
-                #elif filtro_ler == 4:
-                    #inserir funcao de filtro
+Digite a opção de filtro: """))
+            if filtro_ler == 1:
+                ler_arquivos(lista_arquivos("treino-crossfit", ".txt", "."))
+            elif filtro_ler == 2:
+                print("\n"+"-"*5+"MODO DE SELEÇÃO"+"-"*5)
+                arquivo_por_linha = '\n'.join(historico_geral)
+                print(f"Escolha um dos arquivos abaixo para visualizar:\n{arquivo_por_linha}")
+                arquivo_p_ler = input("Digite (ou copie e cole) o nome do arquivo a ser visualizado:\n")
+                if not arquivo_p_ler:
+                    print("Treino não encontrado.")
                 else:
-                    print("Opção inválida")
-            except Exception as e:
-                print(f"Erro: {e}")
-                break
+                    ler_arquivo(arquivo_p_ler)
+            #elif filtro_ler == 3:
+                #inserir funcao de filtro
+            #elif filtro_ler == 4:
+                #inserir funcao de filtro
+                #sugestão: buscar por mes ou ano
+            else:
+                print("Opção inválida")
 
 
 #SELECIONAR
         elif opcoes_usuario == 3:
-            try:
-                print("\n"+"-"*5+"MODO DE SELEÇÃO"+"-"*5)
-                arquivo_por_linha = '\n'.join(historico_geral)
-                print(f"Escolha um dos arquivos abaixo para editar:\n{arquivo_por_linha}")
-                arquivo_p_editar = input("Digite (ou copie e cole) o nome do arquivo a ser editado:\n")
+            print("\n"+"-"*5+"MODO DE SELEÇÃO"+"-"*5)
+            arquivo_por_linha = '\n'.join(historico_geral)
+            print(f"Escolha um dos arquivos abaixo para editar:\n{arquivo_por_linha}")
+            arquivo_p_editar = input("Digite (ou copie e cole) o nome do arquivo a ser editado:\n")
 #EDITAR
-                print("\n"+"-"*5+"MODO DE EDIÇÃO"+"-"*5)
-                opcao_edicao = int(input("""1- Data (xx xx xxxx);\n2- Tempo de duração (minutos);\n3- Tipo de treino;\n4- Movimentos (separados por ", ").
+            print("\n"+"-"*5+"MODO DE EDIÇÃO"+"-"*5)
+            opcao_edicao = int(input("""1- Data (xx xx xxxx);\n2- Tempo de duração (minutos);\n3- Tipo de treino;
+4- Movimentos (separados por ", ").
 Digite a opção a ser editada: """))
                 
-                edicao = input("Digite o elemento certo: ")
+            edicao = input("Digite o elemento certo: ")
 
-                if opcao_edicao == 1:
-                    edicao_split = edicao.split()
-                    edicao_conteudo = "/".join(edicao_split)
-                    arquivo_editado = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao_conteudo)
-                    historico_geral[arquivo_p_editar] = arquivo_editado
+            if opcao_edicao == 1:
+                #mudar data no conteúdo do arquivo
+                edicao_split = edicao.split()
+                edicao_conteudo = "/".join(edicao_split)
+                arquivo_p_editar = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao_conteudo)
 
-                    #mudar data no nome do arquivo
-                    edicao_nome = "".join(edicao_split)
-                    os.rename(arquivo_p_editar, f'treino-crossfit{edicao_nome}.txt')
-                    print(historico_geral)
-                    historico_geral.sort()
+                #mudar data no nome do arquivo
+                edicao_nome = "".join(edicao_split)
+                os.rename(arquivo_p_editar, f'treino-crossfit{edicao_nome}.txt')
+                print(historico_geral)
+                #historico_geral.sort()
+                #print(historico_geral)
 
-                elif opcao_edicao == 2 or opcao_edicao == 3:
-                    editar_arquivo(arquivo_p_editar, opcao_edicao, edicao)
+            elif opcao_edicao == 2 or opcao_edicao == 3:
+                #mudar tempo de duração ou tipo de treino
+                arquivo_p_editar = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao)
 
-                elif opcao_edicao == 4:
-                    editar_movim_arquivo(arquivo_p_editar, edicao)
+            elif opcao_edicao == 4:
+                #mudar movimentos do treino
+                arquivo_p_editar = editar_movim_arquivo(arquivo_p_editar, edicao)
 
-                else:
-                    print("Opção inválida")
-
-            except Exception as e:
-                print(f"Erro: {e}")
-                break
+            else:
+                print("Opção inválida")
 
 #SELECIONAR
         elif opcoes_usuario == 4:
-                try:
-                    print("\n"+"-"*5+"MODO DE REMOÇÃO"+"-"*5)
-                    arquivo_por_linha = '\n'.join(historico_geral)
-                    print(f"Escolha um dos arquivos abaixo para remover:\n{arquivo_por_linha}")
-                    arquivo_p_remover = input("Digite (ou copie e cole) o nome do arquivo a ser removido:\n")
+                print("\n"+"-"*5+"MODO DE REMOÇÃO"+"-"*5)
+                arquivo_por_linha = '\n'.join(historico_geral)
+                print(f"Escolha um dos arquivos abaixo para remover:\n{arquivo_por_linha}")
+                arquivo_p_remover = input("Digite (ou copie e cole) o nome do arquivo a ser removido:\n")
 #DELETAR
-                    deletar_arquivo(arquivo_p_remover)
-                except Exception as e:
-                    print(f"Erro: {e}")
-                    break
+                deletar_arquivo(arquivo_p_remover)
 
 #ENCERRAR
     except Exception as e:

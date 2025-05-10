@@ -1,6 +1,0 @@
-Data: 20/02/2026
-Duração: 50 minutos
-Tipo de treino: For Time
-Movimentos: 
-1. Andar
-2. Correr
