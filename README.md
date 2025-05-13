@@ -23,7 +23,7 @@ Quando o programa é iniciado, o sistema busca os arquivos de treinos já existe
 
 1. **Adicionar**: o usuário escolhe a opção 1, assim,  o sistema pedirá para digitar a data do treino e, com isso, criará um arquivo com nome contendo a data digitada. Em seguida, pedirá os outros dados: tempo de duração, tipo de treino e movimentos feitos.
 
-    ![foto do arquivo](imagem.png)
+    ![alt text](arquivo.jpg)
 
 2. **Visualizar**: o usuário escolhe a opção 2, assim, o sistema pedirá para selecionar entre as opções de filtro:
     - Todo o histórico;
