@@ -23,6 +23,16 @@ def lista_arquivos(comeco, fim, caminho):
 
     return historico_treinos
 
+def carregar_historico():
+    return lista_arquivos("treino-crossfit", ".txt", ".")
+
+def inicio():
+    print("="*40)
+    print("SEJA BEM-VINDO AO WOD TRACKER!")
+    print("Carregando treinos salvos...\n")
+    return carregar_historico()
+historico_geral = inicio()
+
 def ler_arquivos(historico_geral):
     if historico_geral == []:
         print("Nenhum treino encontrado.")
@@ -52,18 +62,23 @@ def filtragem():
     return
 
 def editar_arquivo(arquivo_p_editar, opcao_edicao, edicao):
+    with open(arquivo_p_editar, "r", encoding="utf8") as arquivo:
+        linhas = arquivo.readlines()
+    
     for i in arquivo_p_editar:
         if opcao_edicao == 1 and i == 0:
-            arquivo_p_editar[i] = "Data: "+edicao
+            linhas[i] = "Data: "+edicao
             
         elif opcao_edicao == 2 and i == 1:
-            arquivo_p_editar[i] = "Tempo de duração: "+edicao+" minutos"
+            linhas[i] = "Tempo de duração: "+edicao+" minutos"
             
         elif opcao_edicao == 3 and i == 2:
-            arquivo_p_editar[i] = "Tipo de treino: "+edicao
+            linhas[i] = "Tipo de treino: "+edicao
 
-        linha_editada = arquivo_p_editar
-    return linha_editada
+    with open(arquivo_p_editar, "w", encoding="utf8") as arquivo:
+        arquivo.writelines(linhas)
+
+    return arquivo_p_editar
 
 def editar_movim_arquivo(arquivo_p_editar, edicao):
     edicao_lista = [e.capitalize() for e in edicao.split(", ")]
@@ -121,7 +136,7 @@ Digite apenas o número correspondente à ação: """))
             
             tempo = input("Tempo de duração do treino em minutos: ")
             tipo = input("Tipo do treino (AMRAP, EMOM, For Time): ")
-            movimentos = input("Movimentos (separe os movimentos por ', '): ")
+            movimentos = input("""Movimentos (separe os movimentos por ", "): """)
             
             lista_arquivos("treino-crossfit", ".txt", ".")
             adicionar_no_arquivo(movimentos, data_nome_arquivo, tempo, tipo, data_conteudo)
@@ -173,12 +188,12 @@ Digite a opção a ser editada: """))
             edicao = input("Digite o elemento certo: ")
 
             if opcao_edicao == 1:
-                #mudar data no conteúdo do arquivo
+                #mudar data no CONTEÚDO do arquivo
                 edicao_split = edicao.split()
                 edicao_conteudo = "/".join(edicao_split)
                 arquivo_p_editar = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao_conteudo)
 
-                #mudar data no nome do arquivo
+                #mudar data no NOME do arquivo
                 edicao_nome = "".join(edicao_split)
                 os.rename(arquivo_p_editar, f'treino-crossfit{edicao_nome}.txt')
                 print(historico_geral)
