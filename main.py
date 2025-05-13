@@ -123,7 +123,7 @@ while True:
     try:
 #CRIAR
         print("/\\" * 15)
-        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar\n3- Editar\n4- Deletar\n 5- Suas metas
+        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar\n3- Editar\n4- Deletar\n5- Suas metas
 Digite apenas o número correspondente à ação: """))
         #inputs para adicionar
         if opcoes_usuario == 1:
@@ -223,8 +223,18 @@ Digite a opção a ser editada: """))
         elif opcoes_usuario == 5:
             quantidade_metas=int(input("Digite a quantidade de metas que deseja adcionar: "))
             metas = []
+            metas_concluidas = []
             for i in range(quantidade_metas):
                 metas.append(input("Digite sua meta: "))
+                for arquivo in historico_geral:
+                    with open(arquivo, "r" , encoding="utf-8") as treino:
+                        conteudo = treino.read()
+                        if conteudo in metas:
+                            metas_concluidas.append(conteudo)
+                            metas.remove(conteudo)
+            print(f"METAS:  {metas}")
+            print(f"METAS CONCLUIDAS:  {metas_concluidas}")
+                        
                 
 
 
