@@ -1,5 +1,6 @@
 import os
 
+os.system('cls')
 historico_geral = []
 
 def adicionar_no_arquivo(movimentos, data, tempo, tipo, data_conteudo):
