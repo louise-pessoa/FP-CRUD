@@ -10,7 +10,7 @@ WOD Tracker é um sistema completo que permite o usuário registrar todos os seu
 
 O usuário poderá **adicionar**, **visualizar**, **editar** e **excluir** registros dos treinos de CrossFit, com informações como: data, tipo de treino (AMRAP, EMOM, For Time), tempo/duração em minutos e os movimentos que tinham.
 
-![Tela inicial](crud-tela-inicial.png)
+![alt text](image.png)
 
 ### 2. 🔬 Filtragem por tipo de WOD ou movimento
 
