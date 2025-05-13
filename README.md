@@ -17,9 +17,10 @@ Função que permite o usuário registrar seus treinos novos -utilizando informa
 Quando o programa é iniciado, o sistema busca os arquivos de treinos já existentes no diretório do usuário.
 
 ![Tela inicial](tela_inicial.png)
+
 *Tela de carregamento e opções do CRUD.*
 
-#### Como fuciona o CRUD
+#### Como funciona o CRUD
 
 1. **Adicionar**: o usuário escolhe a opção 1, assim,  o sistema pedirá para digitar a data do treino e, com isso, criará um arquivo com nome contendo a data digitada. Em seguida, pedirá os outros dados: tempo de duração, tipo de treino e movimentos feitos.
 
@@ -54,7 +55,7 @@ para avaliar o desempenho em treinos parecidos.
 
 ### 3. 📁 Armazenamento de dados
 
-Todas as informações dos treinos serão salvas em um banco de dados local (.txt), permitindo a consulta do histórico a qualquer momento.
+Todas os treinos serão salvos em arquivos independentes no formato "treino-crossfitddmmaaaa.txt", permitindo a consulta do histórico a qualquer momento.
 
 ### 4. 🎯 Metas de desempenho
 
@@ -67,3 +68,20 @@ O sistema mostrará sugestões WODs aleatórios com base no histórico do usuár
 ### 6. 🎧 Sugestão de playlist
 
 O sistema mostrará uma sugestão de playlist para o treino, dependendo da emoção do usuário.
+
+### Integrantes
+
+| Nomes            | E-mail institucional |
+| ---------------  | -------------------- |
+| Beatriz Pedrosa  | [bfsp@cesar.school](bfsp@cesar.school)    |
+| Louise Pessoa    | [lpams@cesar.school](lpams@cesar.school)  |
+| Luísa Lócio      | [lbl2@cesar.school](lbl2@cesar.school)    |
+| Marília Liz Alves| [mlal@cesar.school](mlal@cesar.school)    |
+| Rebeca Raissa    | [rrfn@cesar.school](rrfn@cesar.school)    |
+
+### ORIENTADORAS
+
+| Nomes            | E-mail institucional |
+| ---------------  | -------------------- |
+| Ana Carolina Melo| [addm@cesar.school](accm4@cesar.school)   |
+| Marcelo Arcoverde| [mla@cesar.school](mla@cesar.school)      |
