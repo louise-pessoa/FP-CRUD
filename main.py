@@ -320,12 +320,12 @@ Digite a opção a ser editada: """))
             metas_concluidas = []
             for i in range(quantidade_metas):
                 metas.append(input("Digite sua meta: "))
-                for arquivo in historico_geral:
-                    with open(arquivo, "r" , encoding="utf-8") as treino:
-                        conteudo = treino.read()
-                        if conteudo in metas:
-                            metas_concluidas.append(conteudo)
-                            metas.remove(conteudo)
+            for arquivo in historico_geral:
+                with open(arquivo, "r" , encoding="utf-8") as treino:
+                    conteudo = treino.read()
+                    if conteudo in metas:
+                        metas_concluidas.append(conteudo)
+                        metas.remove(conteudo)
             print(f"METAS:  {metas}")
             print(f"METAS CONCLUIDAS:  {metas_concluidas}")
         
