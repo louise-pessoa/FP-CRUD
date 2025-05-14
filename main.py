@@ -123,7 +123,7 @@ while True:
     try:
 #CRIAR
         print("/\\" * 15)
-        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar\n3- Editar\n4- Deletar\n5- Suas metas
+        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar\n3- Editar\n4- Deletar\n5- Suas metas\n6- Sua playlist
 Digite apenas o número correspondente à ação: """))
         #inputs para adicionar
         if opcoes_usuario == 1:
@@ -234,7 +234,24 @@ Digite a opção a ser editada: """))
                             metas.remove(conteudo)
             print(f"METAS:  {metas}")
             print(f"METAS CONCLUIDAS:  {metas_concluidas}")
-                        
+        elif opcoes_usuario == 6:
+            playlist_feliz = {}
+            playlist_triste = {}
+            playlist_dangerousWoman = {}
+            playlist_GOAT = {}
+            playlist_motivado = {}
+
+            playlist = int(input("Qual o seu mood pro seu treino de hoje? 1-Feliz\n2-Triste\n3-Motivada(o)\n4-Dangerous Woman\n5-The G.O.A.T"))
+            if playlist == 1:
+                print(playlist_feliz)
+            elif playlist == 2:
+                print(playlist_triste)
+            elif playlist == 3:
+                print(playlist_motivado)
+            elif playlist == 4:
+                print(playlist_dangerousWoman)
+            elif playlist == 5:
+                print(playlist_GOAT)
                 
 
 
