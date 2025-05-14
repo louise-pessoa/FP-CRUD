@@ -235,13 +235,50 @@ Digite a opção a ser editada: """))
             print(f"METAS:  {metas}")
             print(f"METAS CONCLUIDAS:  {metas_concluidas}")
         elif opcoes_usuario == 6:
-            playlist_feliz = {}
-            playlist_triste = {}
-            playlist_dangerousWoman = {}
-            playlist_GOAT = {}
-            playlist_motivado = {}
+            playlist_feliz = [
+                "Happy - Pharrell Williams", 
+                "You Belong With Me - Taylor Swift", 
+                "Camisa 10 - Turma do Pagode", 
+                "Wannabe - Spice Girls", 
+                "What Makes you Beautiful - One Direction",
+                "Baby - Justin Bieber",
+                "Last Friday Night (T.G.A.F) - Katy Perry",
+                "FANCY - TWICE",
+                "Ta Vendo Aquela Lua - Exaltasamba"
 
-            playlist = int(input("Qual o seu mood pro seu treino de hoje? 1-Feliz\n2-Triste\n3-Motivada(o)\n4-Dangerous Woman\n5-The G.O.A.T"))
+                ]
+            playlist_triste = [
+                "my tears ricochet - Taylor Swift",
+                "Hoje Sou Eu Que Não Mais Te Quero - Charlie Brown Jr.",
+                "You're Losing Me (From The Vault) - Taylor Swift",
+                "Roses - JAEHYUN",
+                "illicit affairs - Taylor Swift",
+                "Daddy Issues - The Neighbourhood",
+                "Dealer - Lana Del Rey",
+                "I Know it's Over - The Smiths",
+                "Your Best American Girls - Mitski",
+                "Bags - Clairo",
+                "Creep - Radiohead"
+
+
+            ]
+            playlist_dangerousWoman = [
+                "Look What You Made Me Do - Taylor Swift",
+                "get him back - Olivia Rodrigo!",
+                "Dangerous Woman - Ariana Grande",
+                "Gimme More - Britney Spears",
+                "Breakin' Dishes - Rihanna",
+                "Sorry Not Sorry - Demi Lovato",
+                "Blank Space - Taylor Swift",
+                "Popular - The Weeknd, Playboi Carti e Madonna",
+                "Pretty Savage - BLACKPINK",
+                "Brooklyn Baby - Lana Del Rey"
+            ]
+            playlist_GOAT = []
+            playlist_motivado = []
+            playlist_cbj = []
+
+            playlist = int(input("Qual o seu mood pro seu treino de hoje? 1-Feliz\n2-Triste\n3-Motivada(o)\n4-Dangerous Woman\n5-The G.O.A.T 6- Charlie Brown Jr. (As melhores)"))
             if playlist == 1:
                 print(playlist_feliz)
             elif playlist == 2:
@@ -252,6 +289,8 @@ Digite a opção a ser editada: """))
                 print(playlist_dangerousWoman)
             elif playlist == 5:
                 print(playlist_GOAT)
+            else:
+                print(playlist_cbj)
                 
 
 
