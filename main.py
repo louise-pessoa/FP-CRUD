@@ -275,22 +275,22 @@ Digite a opção a ser editada: """))
                 "Brooklyn Baby - Lana Del Rey"
             ]
             playlist_GOAT = []
-            playlist_motivado = []
             playlist_cbj = []
 
-            playlist = int(input("Qual o seu mood pro seu treino de hoje? 1-Feliz\n2-Triste\n3-Motivada(o)\n4-Dangerous Woman\n5-The G.O.A.T 6- Charlie Brown Jr. (As melhores)"))
+            playlist = int(input("Qual o seu mood pro seu treino de hoje? 1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T 5- Charlie Brown Jr. (As melhores)"))
             if playlist == 1:
                 print(playlist_feliz)
             elif playlist == 2:
                 print(playlist_triste)
             elif playlist == 3:
-                print(playlist_motivado)
-            elif playlist == 4:
                 print(playlist_dangerousWoman)
-            elif playlist == 5:
+            elif playlist == 4:
                 print(playlist_GOAT)
-            else:
+            elif playlist == 5:
                 print(playlist_cbj)
+            else:
+                print("Essa playlist não existe.")
+
                 
 
 
