@@ -117,6 +117,100 @@ def deletar_arquivo(arquivo_escolhido):
         print(f"O arquivo {arquivo_escolhido} não existe. Digite um presente na lista anterior.")
 
 
+def escolha_playlists(playlists):
+    
+    playlist_feliz = [
+                "1-Happy - Pharrell Williams", 
+                "2-You Belong With Me - Taylor Swift", 
+                "3-Camisa 10 - Turma do Pagode", 
+                "4-Wannabe - Spice Girls", 
+                "5-What Makes you Beautiful - One Direction",
+                "6-Baby - Justin Bieber",
+                "7-Last Friday Night (T.G.A.F) - Katy Perry",
+                "8-FANCY - TWICE",
+                "9-Ta Vendo Aquela Lua - Exaltasamba",
+                "10-Dance The Night - Dua Lipa"]
+    playlist_triste = [
+                "1-my tears ricochet - Taylor Swift",
+                "2-Hoje Sou Eu Que Não Mais Te Quero - Charlie Brown Jr.",
+                "3-You're Losing Me (From The Vault) - Taylor Swift",
+                "4-Roses - JAEHYUN",
+                "5-illicit affairs - Taylor Swift",
+                "6-Daddy Issues - The Neighbourhood",
+                "7-Dealer - Lana Del Rey",
+                "8-I Know it's Over - The Smiths",
+                "9-Your Best American Girls - Mitski",
+                "10-Bags - Clairo"]
+    playlist_dangerousWoman = [
+                "1-Look What You Made Me Do - Taylor Swift",
+                "2-Get him back - Olivia Rodrigo!",
+                "3-Dangerous Woman - Ariana Grande",
+                "4-Gimme More - Britney Spears",
+                "5-Breakin' Dishes - Rihanna",
+                "6-Sorry Not Sorry - Demi Lovato",
+                "7-Blank Space - Taylor Swift",
+                "8-Popular - The Weeknd, Playboi Carti e Madonna",
+                "9-Pretty Savage - BLACKPINK",
+                "10-Brooklyn Baby - Lana Del Rey"]
+    playlist_GOAT = [
+                "1-FE!N - Travis Scott e Playboi Carti",
+                "2-The Real Slim Shady - Eminem",
+                "3-Creppin - Metro Boomin, The Weeknd e 21 Savage",
+                "4-Come Around Me - Justin Bieber",
+                "5-In My Room - Frank Ocean",
+                "6-HUMBLE. - Kendrick Lamar",
+                "7-Pyramids - Frank Ocean",
+                "8-Les - Childish Gambino",
+                "9-Mask Off - Future",
+                "10-New Drop - Don Toliver"]
+    playlist_cbj = [
+                "1-Céu Azul",
+                "2-Dona Do Meu Pensamento",
+                "3-Só Por Uma Noite",
+                "4-Dias De Luta Dia De Glória",
+                "5-Só Os Loucos Sabem",
+                "6-Zóio De Lula",
+                "7-Lugar Ao Sol",
+                "8-O Errado Que Deu Certo",
+                "9-Proibida Pra Mim(Grazon)",
+                "10-Ela Vai Voltar (Todos Os Defeitos De Uma Mulher Perfeita)"]
+    playlist_taylor = [
+                "1-Picture To Burn",
+                "2-The Way I Loved You",
+                "3-The Story Of Us",
+                "4-Babe",
+                "5-Is It Over Now",
+                "6-I Did Something Bad",
+                "7-The Man",
+                "8-august",
+                "9-no body no crime",
+                "10-Bejeweled",
+                "11-But Daddy I Love Him"]
+    
+    if playlists == 1:
+      for playlist in playlist_feliz:
+        print(playlist)
+    elif playlists == 2:
+      for playlist in playlist_triste:
+        print(playlist)
+    elif playlists == 3:
+      for playlist in playlist_dangerousWoman:
+        print(playlist)
+    elif playlists == 4:
+      for playlist in playlist_GOAT:
+        print(playlist)
+    elif playlists == 5:
+      for playlist in playlist_cbj:
+        print(playlist)
+    elif playlists == 6:
+      for playlist in playlist_taylor:
+        print(playlist)
+    else:
+        print("Essa playlist não existe.")
+
+    return print
+
+
 
 while True:
     
@@ -234,62 +328,12 @@ Digite a opção a ser editada: """))
                             metas.remove(conteudo)
             print(f"METAS:  {metas}")
             print(f"METAS CONCLUIDAS:  {metas_concluidas}")
+        
         elif opcoes_usuario == 6:
-            playlist_feliz = [
-                "Happy - Pharrell Williams", 
-                "You Belong With Me - Taylor Swift", 
-                "Camisa 10 - Turma do Pagode", 
-                "Wannabe - Spice Girls", 
-                "What Makes you Beautiful - One Direction",
-                "Baby - Justin Bieber",
-                "Last Friday Night (T.G.A.F) - Katy Perry",
-                "FANCY - TWICE",
-                "Ta Vendo Aquela Lua - Exaltasamba"
-
-                ]
-            playlist_triste = [
-                "my tears ricochet - Taylor Swift",
-                "Hoje Sou Eu Que Não Mais Te Quero - Charlie Brown Jr.",
-                "You're Losing Me (From The Vault) - Taylor Swift",
-                "Roses - JAEHYUN",
-                "illicit affairs - Taylor Swift",
-                "Daddy Issues - The Neighbourhood",
-                "Dealer - Lana Del Rey",
-                "I Know it's Over - The Smiths",
-                "Your Best American Girls - Mitski",
-                "Bags - Clairo",
-                "Creep - Radiohead"
-
-
-            ]
-            playlist_dangerousWoman = [
-                "Look What You Made Me Do - Taylor Swift",
-                "get him back - Olivia Rodrigo!",
-                "Dangerous Woman - Ariana Grande",
-                "Gimme More - Britney Spears",
-                "Breakin' Dishes - Rihanna",
-                "Sorry Not Sorry - Demi Lovato",
-                "Blank Space - Taylor Swift",
-                "Popular - The Weeknd, Playboi Carti e Madonna",
-                "Pretty Savage - BLACKPINK",
-                "Brooklyn Baby - Lana Del Rey"
-            ]
-            playlist_GOAT = []
-            playlist_cbj = []
-
-            playlist = int(input("Qual o seu mood pro seu treino de hoje? 1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T 5- Charlie Brown Jr. (As melhores)"))
-            if playlist == 1:
-                print(playlist_feliz)
-            elif playlist == 2:
-                print(playlist_triste)
-            elif playlist == 3:
-                print(playlist_dangerousWoman)
-            elif playlist == 4:
-                print(playlist_GOAT)
-            elif playlist == 5:
-                print(playlist_cbj)
-            else:
-                print("Essa playlist não existe.")
+            print("Playlist para o seu mood:\n1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T\n5- Charlie Brown Jr. (As melhores)\n6-Taylor Swift (A maior)")
+            playlists = int(input("Qual o seu mood pro seu treino de hoje?"))
+            print(escolha_playlists(playlists))
+           
 
                 
 
