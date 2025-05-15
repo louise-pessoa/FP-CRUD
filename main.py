@@ -328,10 +328,16 @@ Digite a opção a ser editada: """))
                         print(f"{i}-{meta}")
                     
                     quantidade_metas_concluidas = int(input("Quantas metas foram concluidas? "))
+                    indices_para_remover = []
                     for i in range(quantidade_metas_concluidas):
                         conclusao = int(input("Digite o número de uma meta concluida: "))
-                        metas_concluidas.append(metas[i])
-                        concluidas = metas.remove(metas[i-1])
+                        indices_para_remover.append(conclusao - 1)
+                        
+                    indices_para_remover.sort(reverse=True)
+
+                    for indice in indices_para_remover:
+                        metas_concluidas.append(metas[indice])
+                        metas.pop(indice)
                         
                 elif add_remove == 3:
                     print("\nMETAS:")
