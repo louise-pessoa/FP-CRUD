@@ -2,6 +2,8 @@ import os
 
 os.system('cls')
 historico_geral = []
+metas = []
+metas_concluidas = []
 
 def adicionar_no_arquivo(movimentos, data, tempo, tipo, data_conteudo):
         with open(f"treino-crossfit{data}.txt", "w", encoding='utf8') as arquivo:
@@ -314,8 +316,6 @@ Digite a opção a ser editada: """))
                 deletar_arquivo(arquivo_p_remover)
 #SUAS METAS
         elif opcoes_usuario == 5:
-            metas = []
-            metas_concluidas = []
             while True:
                 add_remove = int(input("O que você deseja fazer? 1-Adicionar meta 2-Concluir meta 3-Visualizar progresso 4-SAIR: "))
                 if add_remove == 1:
