@@ -76,7 +76,7 @@ O usuário escolhe a opção 6, assim o sistema apresenta as opções de mood e 
 | Beatriz Pedrosa  | [bfsp@cesar.school](bfsp@cesar.school)    |
 | Louise Pessoa    | [lpams@cesar.school](lpams@cesar.school)  |
 | Luísa Lócio      | [lbl2@cesar.school](lbl2@cesar.school)    |
-| Marília Liz Alves| [mlal@cesar.school](mlal@cesar.school)    |
+| Marília Liz | [mlal@cesar.school](mlal@cesar.school)    |
 | Rebeca Raissa    | [rrfn@cesar.school](rrfn@cesar.school)    |
 
 ### ORIENTADORAS
