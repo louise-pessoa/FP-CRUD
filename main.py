@@ -315,19 +315,30 @@ Digite a opção a ser editada: """))
 #DELETAR
                 deletar_arquivo(arquivo_p_remover)
         elif opcoes_usuario == 5:
-            quantidade_metas=int(input("Digite a quantidade de metas que deseja adcionar: "))
             metas = []
             metas_concluidas = []
-            for i in range(quantidade_metas):
-                metas.append(input("Digite sua meta: "))
-            for arquivo in historico_geral:
-                with open(arquivo, "r" , encoding="utf-8") as treino:
-                    conteudo = treino.read()
-                    if conteudo in metas:
-                        metas_concluidas.append(conteudo)
-                        metas.remove(conteudo)
-            print(f"METAS:  {metas}")
-            print(f"METAS CONCLUIDAS:  {metas_concluidas}")
+            while True:
+                add_remove = int(input("O que você deseja fazer? 1-Adicionar meta 2-Concluir meta 3-Visualizar progresso 4-SAIR "))
+                if add_remove == 1:
+                    quantidade_metas=int(input("Digite a quantidade de metas que deseja adcionar: "))
+                    for i in range(quantidade_metas):
+                        meta_nova = metas.append(input(f"Digite sua meta {i+1}: "))
+                elif add_remove == 2:
+                    print(metas)
+                    quantidade_metas_concluidas = int(input("Quantas metas foram concluidas? "))
+                    for i in range(quantidade_metas_concluidas):
+                        conclusao = int(input("Digite o número de uma meta concluida: "))
+                        concluidas = metas.remove(metas[conclusao-1])
+                        metas_concluidas.append(metas_concluidas)
+                elif add_remove == 3:
+                    print(f"METAS: {metas}")
+                    print(f"METAS_CONCLUIDAS: {metas_concluidas}")
+                elif add_remove == 4:
+                    break
+                else:
+                    print("Essa opção não existe.")
+            
+            
         
         elif opcoes_usuario == 6:
             print("Playlist para o seu mood:\n1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T\n5- Charlie Brown Jr. (As melhores)\n6-Taylor Swift (A maior)")
