@@ -210,8 +210,6 @@ def escolha_playlists(playlists):
 
     return print
 
-
-
 while True:
     
     try:
@@ -318,28 +316,34 @@ Digite a opção a ser editada: """))
             metas = []
             metas_concluidas = []
             while True:
-                add_remove = int(input("O que você deseja fazer? 1-Adicionar meta 2-Concluir meta 3-Visualizar progresso 4-SAIR "))
-                if add_remove == 1:
-                    quantidade_metas=int(input("Digite a quantidade de metas que deseja adcionar: "))
-                    for i in range(quantidade_metas):
-                        meta_nova = metas.append(input(f"Digite sua meta {i+1}: "))
-                elif add_remove == 2:
-                    print(metas)
-                    quantidade_metas_concluidas = int(input("Quantas metas foram concluidas? "))
-                    for i in range(quantidade_metas_concluidas):
-                        conclusao = int(input("Digite o número de uma meta concluida: "))
-                        concluidas = metas.remove(metas[conclusao-1])
-                        metas_concluidas.append(metas_concluidas)
-                elif add_remove == 3:
-                    print(f"METAS: {metas}")
-                    print(f"METAS_CONCLUIDAS: {metas_concluidas}")
-                elif add_remove == 4:
-                    break
-                else:
-                    print("Essa opção não existe.")
+              add_remove = int(input("O que você deseja fazer? 1-Adicionar meta 2-Concluir meta 3-Visualizar progresso 4-SAIR: "))
+         if add_remove == 1:
+            quantidade_metas=int(input("Digite a quantidade de metas que deseja adcionar: "))
+            for i in range(quantidade_metas):
+                meta_nova = metas.append(input(f"Digite sua meta {i+1}: "))                       
+        elif add_remove == 2:
+            print("\nSUAS METAS:")
+            for i, meta in enumerate(metas,start=1):
+                print(f"{i}-{meta}\n")
+                    
+            quantidade_metas_concluidas = int(input("Quantas metas foram concluidas? "))
+            for i in range(quantidade_metas_concluidas):
+                conclusao = int(input("Digite o número de uma meta concluida: "))
+                metas_concluidas.append(metas[conclusao-1])
+                concluidas = metas.remove(metas[conclusao-1])
+                        
+        elif add_remove == 3:
+            print("\nMETAS:")
+            for meta in metas:
+                print(meta)
+            print("\nMETAS_CONCLUIDAS:")
+            for avanco in metas_concluidas:
+                print(f"{avanco}\n")
+        elif add_remove == 4:
+            break
+        else:
+            print("Essa opção não existe.")
             
-            
-        
         elif opcoes_usuario == 6:
             print("Playlist para o seu mood:\n1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T\n5- Charlie Brown Jr. (As melhores)\n6-Taylor Swift (A maior)")
             playlists = int(input("Qual o seu mood pro seu treino de hoje?"))
