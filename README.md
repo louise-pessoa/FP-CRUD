@@ -59,7 +59,7 @@ Todas os treinos serão salvos em arquivos independentes no formato "treino-cros
 
 ### 4. 🎯 Metas de desempenho
 
-O usuário poderá registrar metas como “fazer 50 pull-ups seguidos” ou “baixar o tempo no Fran para menos de 6 minutos”. O sistema acompanhará essas metas e mostrará o progresso.
+O usuário poderá registrar metas como “fazer 50 pull-ups seguidos” ou “baixar o tempo no Fran para menos de 6 minutos”. O sistema acompanhará essas metas e mostrará o progresso. 
 
 ### 5. 🎲 Sugestões de WODs aleatórios
 
@@ -67,7 +67,7 @@ O sistema mostrará sugestões WODs aleatórios com base no histórico do usuár
 
 ### 6. 🎧 Sugestão de playlist
 
-O sistema mostrará uma sugestão de playlist para o treino, dependendo da emoção do usuário.
+O usuário escolhe a opção 6, assim o sistema apresenta as opções de mood e pede para que ele escolha uma delas. Após sua escolha, será apresentada uma playlist que melhor se adequa ao humor escolhido pelo usuário.
 
 ### Integrantes
 
