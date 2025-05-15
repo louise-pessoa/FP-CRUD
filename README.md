@@ -59,7 +59,7 @@ Todas os treinos serão salvos em arquivos independentes no formato "treino-cros
 
 ### 4. 🎯 Metas de desempenho
 
-O usuário poderá registrar metas como “fazer 50 pull-ups seguidos” ou “baixar o tempo no Fran para menos de 6 minutos”. O sistema acompanhará essas metas e mostrará o progresso. 
+O usuário escolhe a opção 5, assim o sistema dará a opções do que ele pode fazer com suas metas, como adicionar metas(escolhendo a opção 1), concluir metas (escolhendo a opção 2) ou acompanhar suas metas(escolhendo a opção 3) quantas vezes ele quiser até ele decidir sair (escolhendo a opção 4). Caso ele escolha adicionar, o sistema vai perguntar quantas metas ele quer adicionar e quais serão essas metas, armazenando na lista de metas. Caso ele escolha concluir o sistema vai mostrar a lista de metas cadastradas e perguntar quantas metas ele concluiu e quais os números delas, de modo que as metas concluídas serão removidas da lista de metas e adicionadas em uma lista de metas concluidas. Caso ele escolha acompanhar, o sistema dará um retorno de quais são suas metas e quais são suas metas concluidas.
 
 ### 5. 🎲 Sugestões de WODs aleatórios
 
