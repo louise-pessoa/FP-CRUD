@@ -325,13 +325,13 @@ Digite a opção a ser editada: """))
                 elif add_remove == 2:
                     print("\nSUAS METAS:")
                     for i, meta in enumerate(metas,start=1):
-                        print(f"{i}-{meta}\n")
+                        print(f"{i}-{meta}")
                     
                     quantidade_metas_concluidas = int(input("Quantas metas foram concluidas? "))
                     for i in range(quantidade_metas_concluidas):
                         conclusao = int(input("Digite o número de uma meta concluida: "))
-                        metas_concluidas.append(metas[conclusao-1])
-                        concluidas = metas.remove(metas[conclusao-1])
+                        metas_concluidas.append(metas[i])
+                        concluidas = metas.remove(metas[i-1])
                         
                 elif add_remove == 3:
                     print("\nMETAS:")
@@ -339,7 +339,8 @@ Digite a opção a ser editada: """))
                         print(meta)
                     print("\nMETAS_CONCLUIDAS:")
                     for avanco in metas_concluidas:
-                        print(f"{avanco}\n")
+                        print(f"{avanco}")
+                    
                 elif add_remove == 4:
                     break
                 else:
