@@ -44,14 +44,34 @@ Quando o programa é iniciado, o sistema busca os arquivos de treinos já existe
 
 4. **Deletar**: o usuário escolhe a opção 4, assim, o sistema mostrará uma lista com todos os arquivos que já existem e pedirá que seja digitado o escolhido para excluir.
 
-### 2. 🔬 Filtragem por tipo de WOD ou movimento
+### 2. 🔬 Filtrar Treinos Salvos
 
-O sistema permitirá filtrar treinos por:
+O WOD Tracker permite que você filtre os treinos salvos de acordo com três ccritérios principais:
+- **Tipo de Treino** (ex.: AMRAP, EMOM, For Time)
+- **Movimento** (ex.: Agachamento, Burpee)
+- **Data do Treino** (ex.: 16 05 2025)
+  
+#### Como usar o filtro
 
-- tipo (EMOM, AMRAP ou For Time);
-- movimentos específicos (como snatch);
+Passo a passo:
+1 . No menu principal, escolha a opção **Visualizar** (digitando 2)
 
-para avaliar o desempenho em treinos parecidos.
+2. Quando solicitado para escolher o filtro, selecione uma das opções que utilizam a função de filtragem (opções 3 ou 4, ambas chamam a função de filtragem).
+
+3. Você verá um formulário pedindo para informar os filtros:
+
+    - **Filtrar por tipo** : digite o tipo de treino que deseja buscar (exemplo: amrap).
+Dica: Caso queira ignorar este filtro, basta pressionar **Enter** sem digitar nada.
+
+    -**Filtrar por movimento** : digite o movimento que deseja buscar (exemplo: burpee).
+Dica: Para não filtrar por movimento, pressione **Enter**.
+
+    - **Filtrar por data**: digite a data no formato dd mm aaaa (exemplo: 16 05 2025).
+Dica: Para ignorar a data, pressione **Enter**.
+
+Após preencher os filtros desejados, o sistema fará a busca e exibirá os treinos que correspondem a todos os **filtros preenchidos**.
+
+Se quiser voltar ao menu principal após visualizar os resultados da filtragem, basta pressionar **Enter** quando solicitado.
 
 ### 3. 📁 Armazenamento de dados
 
