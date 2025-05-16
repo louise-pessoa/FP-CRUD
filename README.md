@@ -62,13 +62,16 @@ Passo a passo:
 3. Você verá um formulário pedindo para informar os filtros:
 
     - **Filtrar por tipo** : digite o tipo de treino que deseja buscar (exemplo: amrap).
-Dica: Caso queira ignorar este filtro, basta pressionar **Enter** sem digitar nada.
+      
+        Dica: Caso queira ignorar este filtro, basta pressionar **Enter** sem digitar nada.
 
     - **Filtrar por movimento** : digite o movimento que deseja buscar (exemplo: burpee).
-Dica: Para não filtrar por movimento, pressione **Enter**.
+
+        Dica: Para não filtrar por movimento, pressione **Enter**.
 
     - **Filtrar por data**: digite a data no formato dd mm aaaa (exemplo: 16 05 2025).
-Dica: Para ignorar a data, pressione **Enter**.
+
+        Dica: Para ignorar a data, pressione **Enter**.
 
 Após preencher os filtros desejados, o sistema fará a busca e exibirá os treinos que correspondem a todos os **filtros preenchidos**.
 
