@@ -61,8 +61,64 @@ def ler_arquivo(arquivo_p_ler):
         print(f"Erro ao ler o arquivo: {e}")
 
 #FILTRAR
-def filtragem():
-    return
+def filtrar_treinos():
+    os.system("cls")
+    print("------------------ | FILTRAR TREINOS | -------------------")
+    
+    tipoFiltro = input("Filtrar por tipo: ").strip().lower()
+    movimentoFiltro = input("Filtrar por movimento: ").strip().lower()
+    dataFiltro = input("Filtrar por data: ").strip()
+
+    treinos = []
+    
+    for nome_arquivo in os.listdir():
+        if nome_arquivo.startswith("treino-crossfit") and nome_arquivo.endswith(".txt"):
+            with open(nome_arquivo, "r", encoding="utf-8") as arquivo:
+                linhas = arquivo.readlines()
+                treino = {"movimentos": []}
+                lendo_movimentos = False
+
+                for linha in linhas:
+                    linha = linha.strip()
+                    if linha.startswith("Data:"):
+                        treino["data"] = linha[5:].strip()
+                        lendo_movimentos = False
+                    elif linha.startswith("Tipo de treino:"):
+                        treino["tipo"] = linha[16:].strip().lower()
+                        lendo_movimentos = False
+                    elif linha.startswith("Movimentos:"):
+                        treino["movimentos"] = []
+                        lendo_movimentos = True
+                    elif lendo_movimentos:
+                        if linha and linha[0].isdigit() and "." in linha:
+                            movimento = linha.split(". ", 1)[-1].strip().lower()
+                            treino["movimentos"].append(movimento)
+                        else:
+                            lendo_movimentos = False
+
+                if treino:
+                    treinos.append(treino)
+
+    resultados = []
+    for t in treinos:
+        tipo_ok = tipoFiltro in t.get("tipo", "") if tipoFiltro else True
+        movimento_ok = any(movimentoFiltro in m for m in t.get("movimentos", [])) if movimentoFiltro else True
+        data_ok = dataFiltro == t.get("data", "") if dataFiltro else True
+
+        if tipo_ok and movimento_ok and data_ok:
+            resultados.append(t)
+
+    if resultados:
+        print("\n----------------- | RESULTADOS ENCONTRADOS | -------------------")
+        for t in resultados:
+            print(f"Data: {t.get('data', '')}")
+            print(f"Tipo: {t.get('tipo', '')}")
+            print(f"Movimentos: {', '.join(t.get('movimentos', []))}")
+            print("-------------------------------------------------")
+    else:
+        print("\nOpss... Nenhum treino encontrado :()")
+
+    input("\nSe quiser continuar pressione o Enter... :)")
 
 def editar_arquivo(arquivo_p_editar, opcao_edicao, edicao):
     with open(arquivo_p_editar, "r", encoding="utf8") as arquivo:
@@ -249,24 +305,28 @@ Digite apenas o número correspondente à ação: """))
 4- Por movimento.
 Digite a opção de filtro: """))
             if filtro_ler == 1:
-                ler_arquivos(lista_arquivos("treino-crossfit", ".txt", "."))
+                ler_arquivos(historico_geral)
             elif filtro_ler == 2:
-                print("\n"+"-"*5+"MODO DE SELEÇÃO"+"-"*5)
-                arquivo_por_linha = '\n'.join(historico_geral)
-                print(f"Escolha um dos arquivos abaixo para visualizar:\n{arquivo_por_linha}")
-                arquivo_p_ler = input("Digite (ou copie e cole) o nome do arquivo a ser visualizado:\n")
-                if not arquivo_p_ler:
-                    print("Treino não encontrado.")
-                else:
-                    ler_arquivo(arquivo_p_ler)
-            #elif filtro_ler == 3:
-                #inserir funcao de filtro
-            #elif filtro_ler == 4:
-                #inserir funcao de filtro
-                #sugestão: buscar por mes ou ano
+                if not historico_geral:
+                    print ("Nenhum treino encontrado :( )")
+                else: 
+                    print("\n Arquivos disponíveis: ")
+                for i, arquivo in enumerate(historico_geral): 
+                    print (f"{i+1}.{arquivo}")
+                try:
+                    escolha = int(input("Escolha o número do arquivo que deseja visualizar: "))
+                    if 1<= escolha <= len(historico_geral):
+                        ler_arquivo(historico_geral[escolha-1])
+                    else:
+                        print ("Opss... Número Inválido :/")
+                except ValueError:
+                    print ("Entrada Inválida :/")
+            elif filtro_ler == 3:
+                filtrar_treinos()
+            elif filtrar_treinos == 4: 
+                filtrar_treinos()
             else:
-                print("Opção inválida")
-
+                print ("Opção de filtragem inválida...")               
 
 #SELECIONAR
         elif opcoes_usuario == 3:
