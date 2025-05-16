@@ -1,5 +1,4 @@
 import os
-
 os.system('cls')
 historico_geral = []
 metas = []
@@ -174,9 +173,7 @@ def deletar_arquivo(arquivo_escolhido):
     except FileNotFoundError:
         print(f"O arquivo {arquivo_escolhido} não existe. Digite um presente na lista anterior.")
 
-
 def escolha_playlists(playlists):
-    
     playlist_feliz = [
                 "1-Happy - Pharrell Williams", 
                 "2-You Belong With Me - Taylor Swift", 
@@ -269,11 +266,11 @@ def escolha_playlists(playlists):
     return print
 
 while True:
-    
     try:
 #CRIAR
         print("/\\" * 15)
-        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar\n3- Editar\n4- Deletar\n5- Suas metas\n6- Sua playlist
+        opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar
+3- Editar\n4- Deletar\n5- Suas metas\n6- Sua playlist
 Digite apenas o número correspondente à ação: """))
         #inputs para adicionar
         if opcoes_usuario == 1:
@@ -294,7 +291,6 @@ Digite apenas o número correspondente à ação: """))
             
             print(f"\nTreino salvo como: treino-crossfit{data_nome_arquivo}.txt")
             historico_geral = lista_arquivos("treino-crossfit", ".txt", ".")
-            
 
 #LER
         elif opcoes_usuario == 2:
@@ -343,24 +339,20 @@ Digite a opção a ser editada: """))
             edicao = input("Digite o elemento certo: ")
 
             if opcao_edicao == 1:
-                #mudar data no CONTEÚDO do arquivo
+                #data no CONTEÚDO
                 edicao_split = edicao.split()
                 edicao_conteudo = "/".join(edicao_split)
                 arquivo_p_editar = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao_conteudo)
 
-                #mudar data no NOME do arquivo
+                #data no NOME
                 edicao_nome = "".join(edicao_split)
                 os.rename(arquivo_p_editar, f'treino-crossfit{edicao_nome}.txt')
                 print(historico_geral)
-                #historico_geral.sort()
-                #print(historico_geral)
 
             elif opcao_edicao == 2 or opcao_edicao == 3:
-                #mudar tempo de duração ou tipo de treino
                 arquivo_p_editar = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao)
 
             elif opcao_edicao == 4:
-                #mudar movimentos do treino
                 arquivo_p_editar = editar_movim_arquivo(arquivo_p_editar, edicao)
 
             else:
@@ -417,7 +409,6 @@ Digite a opção a ser editada: """))
             print("Playlist para o seu mood:\n1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T\n5- Charlie Brown Jr. (As melhores)\n6-Taylor Swift (A maior)")
             playlists = int(input("Qual o seu mood pro seu treino de hoje?"))
             print(escolha_playlists(playlists))
-           
 
 #ENCERRAR
     except Exception as e:

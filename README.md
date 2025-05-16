@@ -59,7 +59,21 @@ Todas os treinos serão salvos em arquivos independentes no formato "treino-cros
 
 ### 4. 🎯 Metas de desempenho
 
-O usuário escolhe a opção 5, assim o sistema dará a opções do que ele pode fazer com suas metas, como adicionar metas(escolhendo a opção 1), concluir metas (escolhendo a opção 2) ou acompanhar suas metas(escolhendo a opção 3) quantas vezes ele quiser até ele decidir sair (escolhendo a opção 4). Caso ele escolha adicionar, o sistema vai perguntar quantas metas ele quer adicionar e quais serão essas metas, armazenando na lista de metas. Caso ele escolha concluir o sistema vai mostrar a lista de metas cadastradas e perguntar quantas metas ele concluiu e quais os números delas, de modo que as metas concluídas serão removidas da lista de metas e adicionadas em uma lista de metas concluidas. Caso ele escolha acompanhar, o sistema dará um retorno de quais são suas metas e quais são suas metas concluidas.
+O usuário escolhe a opção 5, assim o sistema dará opções de ações, como:
+
+- adicionar metas (opção 1);
+
+- concluir metas (opção 2);
+
+- acompanhar suas metas (opção 3)
+
+Esse processo se repetirá quantas vezes ele quiser, até ele decidir sair (opção 4).
+
+Caso ele escolha adicionar, o sistema vai perguntar quantas metas ele quer adicionar e quais serão essas metas, armazenando na lista de metas.
+
+Caso ele escolha concluir, o sistema vai mostrar a lista de metas cadastradas e perguntar quantas metas ele concluiu e quais os números delas, de modo que as metas concluídas serão removidas da lista de metas em andamento e adicionadas a uma lista de metas concluidas.
+
+Caso ele escolha acompanhar, o sistema retornará quais são suas metas em adamento e quais são as concluidas.
 
 ### 5. 🎲 Sugestões de WODs aleatórios
 
@@ -67,7 +81,7 @@ O sistema mostrará sugestões WODs aleatórios com base no histórico do usuár
 
 ### 6. 🎧 Sugestão de playlist
 
-O usuário escolhe a opção 6, assim o sistema apresenta as opções de mood e pede para que ele escolha uma delas. Após sua escolha, será apresentada uma playlist que melhor se adequa ao humor escolhido pelo usuário.
+O usuário escolhe a opção 6, assim, o sistema pede para ele escolher uma das opções de humor apresentadas. Após sua escolha, será mostrada a playlist que melhor se adequa ao humor escolhido pelo usuário.
 
 ### Integrantes
 
@@ -76,7 +90,7 @@ O usuário escolhe a opção 6, assim o sistema apresenta as opções de mood e 
 | Beatriz Pedrosa  | [bfsp@cesar.school](bfsp@cesar.school)    |
 | Louise Pessoa    | [lpams@cesar.school](lpams@cesar.school)  |
 | Luísa Lócio      | [lbl2@cesar.school](lbl2@cesar.school)    |
-| Marília Liz | [mlal@cesar.school](mlal@cesar.school)    |
+| Marília Liz      | [mlal@cesar.school](mlal@cesar.school)    |
 | Rebeca Raissa    | [rrfn@cesar.school](rrfn@cesar.school)    |
 
 ### ORIENTADORAS
