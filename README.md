@@ -55,12 +55,17 @@ O WOD Tracker permite que você filtre os treinos salvos de acordo com três ccr
 
 Passo a passo:
 1 . No menu principal, escolha a opção **Visualizar** (digitando 2)
+
 2. Quando solicitado para escolher o filtro, selecione uma das opções que utilizam a função de filtragem (opções 3 ou 4, ambas chamam a função de filtragem).
-3.	Você verá um formulário pedindo para informar os filtros:
+
+3. Você verá um formulário pedindo para informar os filtros:
+
     - **Filtrar por tipo** : digite o tipo de treino que deseja buscar (exemplo: amrap).
 Dica: Caso queira ignorar este filtro, basta pressionar **Enter** sem digitar nada.
+
     -**Filtrar por movimento** : digite o movimento que deseja buscar (exemplo: burpee).
 Dica: Para não filtrar por movimento, pressione **Enter**.
+
     - **Filtrar por data**: digite a data no formato dd mm aaaa (exemplo: 16 05 2025).
 Dica: Para ignorar a data, pressione **Enter**.
 
