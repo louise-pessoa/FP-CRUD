@@ -112,7 +112,8 @@ O usuário escolhe a opção 6, assim, o sistema pede para ele escolher uma das 
 | Louise Pessoa    | [lpams@cesar.school](lpams@cesar.school)  |
 | Luísa Lócio      | [lbl2@cesar.school](lbl2@cesar.school)    |
 | Marília Liz      | [mlal@cesar.school](mlal@cesar.school)    |
-| Rebeca Raissa    | [rrfn@cesar.school](rrfn@cesar.school)    |
+| Rebeca Ferraz    | [rrfn@cesar.school](rrfn@cesar.school)    |
+| Sofia Avallone   | [sas@cesar.school](sas@cesar.school)    |
 
 ### ORIENTADORAS
 
