@@ -359,9 +359,6 @@ Digite a opção a ser editada: """))
             print(escolha_playlists(playlists))
            
 
-                
-
-
 #ENCERRAR
     except Exception as e:
         print(f"Erro: {e}")
