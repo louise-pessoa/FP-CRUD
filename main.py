@@ -323,7 +323,7 @@ Digite a opção de filtro: """))
                     print ("Entrada Inválida :/")
             elif filtro_ler == 3:
                 filtrar_treinos()
-            elif filtrar_treinos == 4: 
+            elif filtro_ler == 4: 
                 filtrar_treinos()
             else:
                 print ("Opção de filtragem inválida...")               
