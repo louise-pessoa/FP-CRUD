@@ -345,7 +345,7 @@ Digite a opção a ser editada: """))
                 #data no NOME
                 edicao_nome = "".join(edicao_split)
                 os.rename(arquivo_p_editar, f'treino-crossfit{edicao_nome}.txt')
-                print(historico_geral)
+
 
             elif opcao_edicao == 2 or opcao_edicao == 3:
                 arquivo_p_editar = editar_arquivo(arquivo_p_editar, opcao_edicao, edicao)
