@@ -164,11 +164,6 @@ def editar_movim_arquivo(arquivo_p_editar, edicao):
     return arquivo_p_editar
 
 def deletar_arquivo(arquivo_escolhido):
-    historico_treinos2 = lista_arquivos("treino-crossfit", ".txt", ".")
-    for arquivo in historico_treinos2:
-        if arquivo == arquivo_escolhido:
-            historico_treinos2.remove(arquivo)
-
     try:
         if os.path.exists(arquivo_escolhido):
             os.remove(arquivo_escolhido)
