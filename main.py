@@ -14,14 +14,17 @@ def adicionar_no_arquivo(movimentos, data, tempo, tipo, data_conteudo):
                 arquivo.write(str(i+1) + ". " + movimentos_lista[i] + "\n")
             
 def lista_arquivos(comeco, fim, caminho):
-    try:
-        historico_treinos = []
-        for arquivo in os.listdir(caminho):
-            if arquivo.startswith(comeco) and arquivo.endswith(fim):
-                historico_treinos.append(arquivo)
-        historico_treinos.reverse()
-    except FileNotFoundError:
-        print("Arquivo não encontrado.")
+    historico_treinos = []
+    for arquivo in os.listdir(caminho):
+        if arquivo.startswith(comeco) and arquivo.endswith(fim):
+            historico_treinos.append(arquivo)
+
+    i = 0
+    while i < len(historico_treinos):
+        if historico_treinos[i] not in os.listdir(caminho):
+            historico_treinos.pop(i)
+        else:
+            i += 1
 
     return historico_treinos
 
@@ -366,6 +369,7 @@ Digite a opção a ser editada: """))
                 arquivo_p_remover = input("Digite (ou copie e cole) o nome do arquivo a ser removido:\n")
 #DELETAR
                 deletar_arquivo(arquivo_p_remover)
+                historico_geral = lista_arquivos("treino-crossfit", ".txt", ".")
 #SUAS METAS
         elif opcoes_usuario == 5:
             while True:
