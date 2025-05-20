@@ -1,4 +1,5 @@
 import os
+import random
 os.system('cls')
 historico_geral = []
 metas = []
@@ -263,12 +264,59 @@ def escolha_playlists(playlists):
 
     return print
 
+def extrair_movimentos():
+    movimentos_totais = set()
+    arquivos = lista_arquivos("treino-crossfit", ".txt", ".")
+    for nome_arquivo in arquivos:
+        try:
+            with open(nome_arquivo, "r", encoding="utf-8") as arquivo:
+                lendo_movimentos = False
+                for linha in arquivo:
+                    linha = linha.strip().lower()
+                    if "movimentos:" in linha:
+                        lendo_movimentos = True
+                    elif lendo_movimentos and linha and linha[0].isdigit() and "." in linha:
+                        movimento = linha.split(". ", 1)[-1]
+                        movimentos_totais.add(movimento)
+                    elif lendo_movimentos and not linha:
+                        lendo_movimentos = False
+        except Exception as e:
+            print(f"Erro ao extrair movimentos de {nome_arquivo}: {e}")
+    return list(movimentos_totais)
+
+
+def sugerir_wod():
+    print("\n"+"-"*5+"SUGESTÃO ALEATÓRIA DE WOD"+"-"*5)
+   
+    movimentos_disponiveis = extrair_movimentos()
+    if not movimentos_disponiveis:
+        print("Nenhum movimento encontrado no histórico! Adicione treinos antes de usar essa função.")
+        input("Pressione Enter para continuar...")
+        return
+
+
+    tipos_wod = ["AMRAP", "EMOM", "For Time"]
+    tipo_aleatorio = random.choice(tipos_wod)
+    duracao_aleatoria = random.randint(10, 40)
+    num_movimentos = random.randint(2, min(5, len(movimentos_disponiveis)))
+    movimentos_aleatorios = random.sample(movimentos_disponiveis, num_movimentos)
+
+
+    print(f"\nTipo de treino: {tipo_aleatorio}")
+    print(f"Duração: {duracao_aleatoria} minutos")
+    print("Movimentos sugeridos:")
+    for mov in movimentos_aleatorios:
+        print(f"- {mov}")
+   
+    input("\nPressione Enter para continuar")
+
+
 while True:
     try:
 #CRIAR
         print("/\\" * 15)
         opcoes_usuario = int(input("""\nEscolha uma ação:\n1- Adicionar\n2- Visualizar
-3- Editar\n4- Deletar\n5- Suas metas\n6- Sua playlist
+3- Editar\n4- Deletar\n5- Suas metas\n6- Sua playlist\n7- Sugerir um Wod aleatório
 Digite apenas o número correspondente à ação: """))
         #inputs para adicionar
         if opcoes_usuario == 1:
@@ -408,6 +456,10 @@ Digite a opção a ser editada: """))
             print("Playlist para o seu mood:\n1-Feliz\n2-Triste\n3-Dangerous Woman\n4-The G.O.A.T\n5- Charlie Brown Jr. (As melhores)\n6-Taylor Swift (A maior)")
             playlists = int(input("Qual o seu mood pro seu treino de hoje?"))
             print(escolha_playlists(playlists))
+
+#SUGESTÃO
+        elif opcoes_usuario == 7:
+            sugerir_wod()
 
 #ENCERRAR
     except Exception as e:
