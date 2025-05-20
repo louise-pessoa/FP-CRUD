@@ -100,6 +100,16 @@ Caso ele escolha acompanhar, o sistema retornará quais são suas metas em adame
 
 O sistema mostrará sugestões WODs aleatórios com base no histórico do usuário para manter os treinos variados.
 
+Primeiro, ele procura em arquivos de texto antigos os nomes dos exercícios que já foram usados em outros treinos. Para isso, ele abre os arquivos, lê linha por linha e guarda os exercícios encontrados.
+
+Depois, com esses exercícios guardados, ele escolhe aleatoriamente:
+- um tipo de treino (como AMRAP, EMOM ou For Time),
+- um tempo de duração entre 10 e 40 minutos,
+- e alguns exercícios aleatórios da lista.
+
+Por fim, ele mostra na tela uma sugestão de treino completa, com o tipo, o tempo e os exercícios escolhidos.
+Se não encontrar nenhum exercício nos arquivos, ele avisa que é preciso registrar treinos antes de usar essa função.
+
 ### 6. 🎧 Sugestão de playlist
 
 O usuário escolhe a opção 6, assim, o sistema pede para ele escolher uma das opções de humor apresentadas. Após sua escolha, será mostrada a playlist que melhor se adequa ao humor escolhido pelo usuário.
